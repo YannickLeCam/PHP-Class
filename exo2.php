@@ -25,13 +25,8 @@ formaterDateFr("2018-02-23"); </p>
      * @return string
      */
     function formaterDateFr(string $date):string {
-
         $fmt = new IntlDateFormatter("fr_FR", IntlDateFormatter::FULL, IntlDateFormatter::NONE, 'Europe/Paris', IntlDateFormatter::GREGORIAN);
-
-        $date_array=explode("-",$date); //0=>yyyy , 1=>mm , 2=>dd
-        $date = new DateTime();
-        $date->setDate($date_array[0],$date_array[1],$date_array[2]);  
-
+        $date=new DateTime($date);
         return datefmt_format($fmt , $date);
     }
     if (isset($_GET['birthday'])) {

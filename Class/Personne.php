@@ -2,22 +2,26 @@
 Class Personne{
     private string $name;
     private string $firstname;
-    private string $birthday;
+    private DateTime $birthday;
 
 
     public function __construct(string $name , string $firstname ,string $birthday) {
         $this->name = $name;
         $this->firstname = $firstname;
-        $this->birthday= $birthday;
+        $this->birthday= new DateTime($birthday);
     }
 
+    public function __toString()
+    {
+        return "$this->name $this->firstname";
+    }
     public function getName():string{
         return $this->name;
     }
     public function getFirstname():string{
         return $this->firstname;
     }
-    public function getBirthday():string{
+    public function getBirthday():DateTime{
         return $this->birthday;
     }
 
@@ -31,39 +35,14 @@ Class Personne{
         $this->birthday = $birthday;
     }
 
-    public function age():string {
-        $mois_jour = [
-            "01"=>31,
-            "02"=>28,
-            "03"=>31,
-            "04"=>30,
-            "05"=>31,
-            "06"=>30,
-            "07"=>31,
-            "08"=>31,
-            "09"=>30,
-            "10"=>31,
-            "11"=>30,
-            "12"=>31
-        ];
-        $date = new DateTimeImmutable($this->birthday);
-        $now = new DateTimeImmutable();
-        $day = $now->format('d') - $date->format('d');
-        $month = $now->format('m') - $date->format('m');
-        $year = $now->format('Y') - $date->format('Y');
-        if ($day<0) {
-            $day = $mois_jour[$now->format('m')]+($day);
-            $month-=1;
-        }
-        if ($month<0) {
-            $month+=12;
-            $year-=1;
-        }
-        return $year;
+    public function age():int {
+        $date = $this->birthday;
+        $age=$date->diff(new DateTime(),true);
+        return $age->y;
     }
 
     public function presentation(){
-        return "Bonjour je suis $this->name $this->firstname et j'ai " .$this->age(). " ans. ";
+        return "Bonjour je suis $this et j'ai " .$this->age(). " ans. ";
     }
 } 
 

@@ -30,37 +30,10 @@ function datetoarray(string $date):array{
     return explode('-',$date);
 }
 
-$mois_jour = [
-    "01"=>31,
-    "02"=>28,
-    "03"=>31,
-    "04"=>30,
-    "05"=>31,
-    "06"=>30,
-    "07"=>31,
-    "08"=>31,
-    "09"=>30,
-    "10"=>31,
-    "11"=>30,
-    "12"=>31
-];
-
 if (isset($_GET['birthday'])) {
-    $tabDate = datetoarray($_GET['birthday']);
-    $date = new DateTimeImmutable($_GET['birthday']);
-    $now = new DateTimeImmutable();
-    $day = $now->format('d') - $date->format('d');
-    $month = $now->format('m') - $date->format('m');
-    $year = $now->format('Y') - $date->format('Y');
-    if ($day<0) {
-        $day = $mois_jour[$now->format('m')]+($day);
-        $month-=1;
-    }
-    if ($month<0) {
-        $month+=12;
-        $year-=1;
-    }
-    echo "Vous avez exactement : $year année $month mois et $day jours";
+    $date = new DateTime($_GET['birthday']);
+    $age=$date->diff(new DateTime(),true);
+    echo "Vous avez exactement : ". $age->y. " année ". $age->m ." mois et ". $age->d-1  ." jours";
 }
 
 

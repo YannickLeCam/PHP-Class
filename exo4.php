@@ -16,14 +16,20 @@ Coder l’ensemble des méthodes, accesseurs et mutateurs de la classe tout en r
 tests pour vérifier la cohérence de la classe Voiture. Vous devez afficher les tests et les éléments</p>
 <pre>
 <?php
+
 $v1 = new Voiture("Peugeot","408",5);
 $v2 = new Voiture("Citroën","C4",3);
 var_dump($v1,$v2);
-echo $v1->demarrer() . "<br>";
-echo $v1->accelerer(50). "<br>";
-echo $v2->accelerer(50). "<br>";
-echo $v1->display() . "<br>";
-echo $v2->display() . "<br>";
+echo $v1->demarrer()."<br>";
+echo $v1->accelerer(50)."<br>";
+echo $v2->accelerer(50)."<br>"; // Normalement refuse d'accelerer
+echo $v1->accelerer(24)."<br>"; // Refus d'accelerer en dessous de sa vitesse actuel
+echo $v1->ralentir(50)."<br>"; // Refus de relentir au dessus ou egal 
+echo $v1->ralentir(24)."<br>"; 
+echo $v1->display()."<br>";
+echo $v2->display()."<br>";
+echo $v1->stopper()."<br>";
+echo $v1->display()."<br>"; //Verification de la vitesse modifier et de l'etat de la voiture une fois stopper
 
 ?>
 </pre>

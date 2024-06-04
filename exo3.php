@@ -60,6 +60,7 @@ $p2 = new Personne("DUCHEMIN","Alice","1985-01-17");
 
 echo $p1->presentation() . "<br>";
 echo $p2->presentation() . "<br>";
+
 if (isset($_GET['name']) & isset($_GET['firstname']) & isset($_GET['birthday'])) {
     $p3 = new Personne($_GET['name'],$_GET['firstname'],$_GET['birthday']);
     echo $p3->presentation() . "<br>";
