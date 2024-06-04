@@ -1,10 +1,10 @@
 <?php
 class Voiture {
-    private string $marque;
-    private string $modele;
-    private int $nbPortes;
-    private int $vitesseActuel=0;
-    private bool $isStart=false;
+    protected string $marque;
+    protected string $modele;
+    protected int $nbPortes;
+    protected int $vitesseActuel=0;
+    protected bool $isStart=false;
 
     public function __construct(string $marque,string $modele,int $nbPortes) {
         $this->marque = $marque;
@@ -97,15 +97,15 @@ class Voiture {
 
     public function display(){
         $msg =  <<<msg
-        La marque et le modèle du véhicule est : $this\n
-        Le nombre de porte est : $this->nbPortes\n  
+La marque et le modèle du véhicule est : $this
+Le nombre de porte est : $this->nbPortes \n  
 msg;
         if ($this->isStart) {
             $msg .= "Le véhicule est démarré !\n";
         }else {
             $msg .= "Le véhicule est a l'arret !\n";
         }
-        $msg.= "Sa vitesse actuelle est de : $this->vitesseActuel\n";
+        $msg.= "Sa vitesse actuelle est de : $this->vitesseActuel km/h \n";
         return $msg;
 
     }
