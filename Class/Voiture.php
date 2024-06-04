@@ -98,7 +98,7 @@ class Voiture {
     public function display(){
         $msg =  <<<msg
 La marque et le modèle du véhicule est : $this
-Le nombre de porte est : $this->nbPortes \n  
+Le nombre de porte est : $this->nbPortes \n
 msg;
         if ($this->isStart) {
             $msg .= "Le véhicule est démarré !\n";

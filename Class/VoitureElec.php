@@ -3,12 +3,10 @@
 require_once 'Voiture.php';
 
 class VoitureElec extends Voiture {
-    protected int $autonomie;
+    private int $autonomie;
 
     public function __construct(string $marque,string $modele,int $nbPortes,int $autonomie) {
-        $this->marque = $marque;
-        $this->modele = $modele;
-        $this->nbPortes = $nbPortes;
+        parent::__construct($marque,$modele,$nbPortes); 
         $this->autonomie=$autonomie;
     }
     public function display():string
